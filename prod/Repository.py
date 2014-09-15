@@ -18,6 +18,10 @@ class Repository(object):
         Creates an instance of Repository that is capable of holding a specified
         number of software components. The instance is initially empty.
         '''
+        if capacity < 1:
+            raise ValueError("Repository.__init__:  Invalid parameter. " +
+                             "capacity must be greater or equal to 1.")
+
         self.capacity = capacity
         self.queue = deque(maxlen=self.capacity)
 
@@ -47,6 +51,7 @@ class Repository(object):
         Returns the number of the components in the repository that have method
         count .GT. 0.
         '''
+
         validCount = 0
         for com in range(0, self.count()):
             if self.queue[com].methodCount > 0:
@@ -58,11 +63,18 @@ class Repository(object):
         Returns a list of integers that characterize the lines of code for very
         small, small, medium, large, and very large components.
         '''
+
+        if self.validCount() < 2:
+            raise ValueError("Repository.determineRelativeSizes:  Invalid " +
+                            "count. Repository must contain at least 2 " +
+                            "Components with non-zero methodCounts.")
+
         # Let normalizedSize = ln(number of lines of code / number of methods)
         # for each component having a non-zero method count.
         normalizedSize = []
-        for com in range(0, self.count()):
-            if self.queue[com].methodCount > 0:
+        for comid in range(0, self.count()):
+            com = self.queue[comid]
+            if com.methodCount > 0:
                 normalizedSize.append(math.log(float(com.locCount) /
                                                 float(com.methodCount)))
 

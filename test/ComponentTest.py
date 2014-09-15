@@ -17,15 +17,15 @@ class ComponentTest(unittest.TestCase):
         '''
         # Instantiate a component with name = "", methodCount = 1, locCount = 1
         # ValueError is raised. Component is not constructed.
-        self.assertRaises(ValueError, Component.Component("", 1, 1))
+        self.assertRaises(ValueError, Component.Component, "", 1, 1)
 
         # Instant a component with name = "a", methodCount = -1, locCount = 1
         # ValueError is raised. Component is not constructed.
-        self.assertRaises(ValueError, Component.Component("a", -1, 1))
+        self.assertRaises(ValueError, Component.Component, "a", -1, 1)
 
         # Instantiate a component with name = "a", methodCount = 1, locCount = 0
         # ValueError is raised. Component is not constructed.
-        self.assertRaises(ValueError, Component.Component("a", 1, 0))
+        self.assertRaises(ValueError, Component.Component, "a", 1, 0)
 
         # Instantiate a component with name = "a", methodCount = 1, locCount = 1
         # Component is constructed.
