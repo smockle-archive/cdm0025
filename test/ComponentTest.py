@@ -1,7 +1,8 @@
 '''
 Created on Sep 14, 2014
-
-@author: clay
+Modified on Sep 15, 2014
+Tests verifying a component representing a code object of lines and methods.
+@author: Clay Miller
 '''
 import unittest
 from prod import Component

@@ -1,7 +1,8 @@
 '''
 Created on Sep 14, 2014
-
-@author: clay
+Modified on Sep 15, 2014
+A repository containing zero or more components.
+@author: Clay Miller
 '''
 
 from collections import deque
