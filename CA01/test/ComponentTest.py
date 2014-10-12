@@ -5,7 +5,7 @@ Tests verifying a component representing a code object of lines and methods.
 @author: Clay Miller
 '''
 import unittest
-from prod import Component
+from CA01.prod import Component
 
 class ComponentTest(unittest.TestCase):
     '''
