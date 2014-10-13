@@ -55,7 +55,12 @@ class RepositoryTest(unittest.TestCase):
         self.assertRaises(ValueError, rep2.addComponent)
         self.assertEqual(len(rep2.queue), 0)
 
-        #
+        # Test duplicate component
+        rep3 = Repository.Repository(100)
+        com3 = Component.Component("a", 1, 1)
+        rep3.addComponent(com3)
+        self.assertRaises(ValueError, rep3.addComponent, com3)
+        self.assertEqual(len(rep3.queue), 1)
 
     def testCount(self):
         '''
