@@ -203,7 +203,7 @@ class Repository(object):
 
         return relativeSize
 
-    def estimateByRelativeSize(self, name=None, methodCount, size):
+    def estimateByRelativeSize(self, name=None, methodCount=None, size="M"):
         '''
         Returns an instance of Component with an estimate of the number of lines
         of code based on relative size.
