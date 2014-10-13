@@ -193,6 +193,24 @@ class RepositoryTest(unittest.TestCase):
         rep4.addComponent(com7)
         self.assertEqual(rep4.getRelativeSize(component=com3), "L")
 
+    def testEstimateByRelativeSize(self):
+        '''
+        Test estimateByRelativeSize method.
+        '''
+        # Test zero-length name
+        rep1 = Repository.Repository(5)
+        self.assertRaises(ValueError, rep1.estimateByRelativeSize, "", 1, "M")
+
+        # Test non-string name
+        # Test zero methodCount
+        # Test non-int methodCount
+        # Test invalid size
+        # Test non-string size
+        # Test missing size
+        # Test Component with duplicate name
+        # Test Component in a Repository with too few Components
+        # Test Component in a Repository with enough Components
+
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
