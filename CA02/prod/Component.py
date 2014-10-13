@@ -33,6 +33,7 @@ class Component(object):
         self.name = name
         self.methodCount = methodCount
         self.locCount = locCount
+        self.relativeSize = ""
 
     def getName(self):
         '''
@@ -51,3 +52,9 @@ class Component(object):
         Returns the component's line-of-code count.
         '''
         return self.locCount
+
+    def setRelativeSize(self):
+        '''
+        Sets the component's relative size.
+        '''
+        pass
