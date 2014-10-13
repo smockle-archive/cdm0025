@@ -213,7 +213,7 @@ class Repository(object):
                              "parameter. name must be a non-empty, unique " +
                              "string.")
 
-        if methodCount < 1:
+        if (type(name) is not int) or (methodCount < 1):
             raise ValueError("Repository.estimateByRelativeSize:  Invalid" +
                              "parameter. methodCount must be an integer " +
                              "greater than zero.")
