@@ -208,6 +208,9 @@ class RepositoryTest(unittest.TestCase):
                           methodCount=1, size="M")
 
         # Test missing name
+        rep3 = Repository.Repository(5)
+        self.assertRaises(ValueError, rep3.estimateByRelativeSize,
+                          methodCount=1, size="M")
 
         # Test zero methodCount
         # Test non-int methodCount
