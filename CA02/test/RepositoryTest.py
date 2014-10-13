@@ -223,6 +223,9 @@ class RepositoryTest(unittest.TestCase):
                           methodCount="sauerkraut", size="M")
 
         # Test missing methodCount
+        rep6 = Repository.Repository(5)
+        self.assertRaises(ValueError, rep6.estimateByRelativeSize, name="a",
+                          size="M")
 
         # Test invalid size
         # Test non-string size
