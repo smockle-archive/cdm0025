@@ -141,5 +141,8 @@ class Repository(object):
             raise ValueError("Repository.getRelativeSize:  Invalid " +
                              "parameter. Must specify component to check.")
 
-
+        if component.methodCount < 1:
+            raise ValueError("Repository.getRelativeSize:  Invalid " +
+                             "parameter. Must specify component with at least" +
+                             " one method.")
 
