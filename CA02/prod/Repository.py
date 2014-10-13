@@ -210,5 +210,10 @@ class Repository(object):
         '''
         if (name == None) or (type(name) is not str) or (name == ""):
             raise ValueError("Repository.estimateByRelativeSize:  Invalid " +
-                             "parameter. Name must be a non-empty, unique " +
+                             "parameter. name must be a non-empty, unique " +
                              "string.")
+
+        if methodCount < 1:
+            raise ValueError("Repository.estimateByRelativeSize:  Invalid" +
+                             "parameter. methodCount must be an integer " +
+                             "greater than zero.")
