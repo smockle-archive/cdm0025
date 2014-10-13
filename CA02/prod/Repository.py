@@ -146,3 +146,8 @@ class Repository(object):
                              "parameter. Must specify component with at least" +
                              " one method.")
 
+        if self.validCount() < 2:
+            raise ValueError("Repository.determineRelativeSizes:  Invalid " +
+                            "count. Repository must contain at least 2 " +
+                            "Components with non-zero methodCounts.")
+
