@@ -13,27 +13,27 @@ class Component(object):
     of code, number of methods.
     '''
 
-    def __init__(self, name, methodCount, locCount):
+    def __init__(self, name=None, methodCount=None, locCount=None):
         '''
         Creates an instance of a Component, saving its name, number of methods,
         and number of lines of code.
         '''
-        if len(name) < 1:
+        if (type(name) is not str) or (len(name) < 1):
             raise ValueError("Component.__init__:  Invalid parameters. name " +
                              "must be a non-empty string.")
 
-        if methodCount < 0:
+        if (type(methodCount) is not int) or (methodCount < 0):
             raise ValueError("Component.__init__:  Invalid parameters. method" +
-                             "Count must be greater or equal to 0.")
+                             "Count must be an integer greater or equal to 0.")
 
-        if locCount < 1:
+        if (type(locCount) is not int) or (locCount < 1):
             raise ValueError("Component.__init__:  Invalid parameters. loc" +
-                             "Count must greater or equal to 1.")
+                             "Count must be an integer greater or equal to 1.")
 
         self.name = name
         self.methodCount = methodCount
         self.locCount = locCount
-        self.relativeSize = ""
+        self.relativeSize = None
 
     def getName(self):
         '''
@@ -57,6 +57,10 @@ class Component(object):
         '''
         Returns the component's relative size.
         '''
+        if self.relativeSize == None:
+            raise ValueError("Component.getRelativeSize:  Invalid value." +
+                             " relativeSize must be set before it can be " +
+                             "retrieved.")
         return self.relativeSize
 
     def setRelativeSize(self, size=None):
