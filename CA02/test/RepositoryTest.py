@@ -159,6 +159,18 @@ class RepositoryTest(unittest.TestCase):
         self.assertEqual(relativeSizes[3], 16.0)
         self.assertEqual(relativeSizes[4], 28.0)
 
+    def testGetRelativeSize(self):
+        '''
+        Test getRelativeSize method.
+        '''
+        # Test missing component.
+        rep1 = Repository.Repository(5)
+        self.assertEqual(ValueError, rep1.getRelativeSize)
+
+        # Test Component with no methods.
+        # Test Component in a Repository with too few Components.
+        # Test Component in a Repository with enough Components.
+
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
