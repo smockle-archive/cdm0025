@@ -21,7 +21,7 @@ class Repository(object):
         Creates an instance of Repository that is capable of holding a specified
         number of software components. The instance is initially empty.
         '''
-        if capacity < 1:
+        if (type(capacity) is not int) or (capacity < 1):
             raise ValueError("Repository.__init__:  Invalid parameter. " +
                              "capacity must be greater or equal to 1.")
 

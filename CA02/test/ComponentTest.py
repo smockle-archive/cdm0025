@@ -16,6 +16,18 @@ class ComponentTest(unittest.TestCase):
         '''
         Test init method.
         '''
+        # Test non-string name.
+        self.assertRaises(ValueError, Component.Component, name=1,
+                  methodCount=1, locCount=1)
+
+        # Test non-int methodCount.
+        self.assertRaises(ValueError, Component.Component, name="a",
+                  methodCount="a", locCount=1)
+
+        # Test non-int locCount.
+        self.assertRaises(ValueError, Component.Component, name="a",
+                  methodCount=1, locCount="a")
+
         # Instantiate a component with name = "", methodCount = 1, locCount = 1
         # ValueError is raised. Component is not constructed.
         self.assertRaises(ValueError, Component.Component, "", 1, 1)

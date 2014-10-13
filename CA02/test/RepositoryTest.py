@@ -21,6 +21,10 @@ class RepositoryTest(unittest.TestCase):
         # ValueError is raised. Repository is not constructed.
         self.assertRaises(ValueError, Repository.Repository, 0)
 
+        # Test non-int capacity.
+        self.assertRaises(ValueError, Repository.Repository,
+                          capacity="sauerkraut")
+
         # Instantiate a repository with capacity = 1.
         # Repository is constructed. Capacity of repository is 1.
         rep1 = Repository.Repository(1)
