@@ -46,7 +46,7 @@ class RepositoryTest(unittest.TestCase):
         # Add another component (with methodCount = 1) to the repository created
         # in CA01-2.1#2. Repository contains one component (this one). The
         # component added in CA01-2.2#1 is popped. 1 is returned.
-        com2 = Component.Component("a", 1, 1)
+        com2 = Component.Component("b", 1, 1)
         self.assertEqual(rep1.addComponent(com2), 1)
         self.assertEqual(rep1.queue[0].methodCount, 1)
 
@@ -61,6 +61,14 @@ class RepositoryTest(unittest.TestCase):
         rep3.addComponent(com3)
         self.assertRaises(ValueError, rep3.addComponent, com3)
         self.assertEqual(len(rep3.queue), 1)
+
+        # Test component with duplicate name
+        rep4 = Repository.Repository(100)
+        com4 = Component.Component("a", 1, 1)
+        com5 = Component.Component("a", 2, 2)
+        rep4.addComponent(com4)
+        self.assertRaises(ValueError, rep4.addComponent, com5)
+        self.assertEqual(len(rep4.queue), 1)
 
     def testCount(self):
         '''
