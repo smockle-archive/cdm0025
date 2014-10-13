@@ -4,7 +4,7 @@ Modified on Sep 15, 2014
 A component representing a code object of lines and methods.
 @author: Clay Miller
 '''
-from __builtin__ import ValueError
+from __builtin__ import ValueError, str
 
 class Component(object):
     '''
@@ -53,9 +53,32 @@ class Component(object):
         '''
         return self.locCount
 
-    def setRelativeSize(self, size):
+    def getRelativeSize(self):
+        '''
+        Returns the component's relative size.
+        '''
+        return self.relativeSize
+
+    def setRelativeSize(self, size=None):
         '''
         Sets the component's relative size.
         '''
+        # Rescue nulls
+        if size == None:
+            size = "M"
+
+        # Fail if size isn't a string
+        if type(size) is not str:
+            raise ValueError("Component.setRelativeSize:  Invalid parameters." +
+                             " size must be a string.")
+
+        # Validate string
+        size = size.upper()
+        sizes = ["VS", "S", "M", "L", "VL"]
+        if size not in sizes:
+            raise ValueError("Component.setRelativeSize:  Invalid parameters." +
+                             " size must be VS, S, M, L or VL.")
+
+        # Set size
         self.relativeSize = size
         return self.relativeSize
