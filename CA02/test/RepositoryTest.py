@@ -165,7 +165,7 @@ class RepositoryTest(unittest.TestCase):
         '''
         # Test missing component.
         rep1 = Repository.Repository(5)
-        self.assertEqual(ValueError, rep1.getRelativeSize)
+        self.assertRaises(ValueError, rep1.getRelativeSize)
 
         # Test Component with no methods.
         # Test Component in a Repository with too few Components.

@@ -132,3 +132,14 @@ class Repository(object):
 
         # Return [vs, s, m, l, vl]
         return relativeSizes
+
+    def getRelativeSize(self, component=None):
+        '''
+        Returns the relative size of the component passed as a parameter.
+        '''
+        if component == None:
+            raise ValueError("Repository.getRelativeSize:  Invalid " +
+                             "parameter. Must specify component to check.")
+
+
+
