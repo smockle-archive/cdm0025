@@ -53,7 +53,7 @@ class Component(object):
         '''
         return self.locCount
 
-    def setRelativeSize(self):
+    def setRelativeSize(self, size):
         '''
         Sets the component's relative size.
         '''
