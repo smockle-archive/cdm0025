@@ -237,9 +237,13 @@ class RepositoryTest(unittest.TestCase):
         self.assertRaises(ValueError, rep8.estimateByRelativeSize, name="a",
                           methodCount=1, size=1)
 
-        # Test missing size
-
         # Test Component with duplicate name
+        rep9 = Repository.Repository(5)
+        com1 = Component.Component("a", 1, 1)
+        rep9.addComponent(com1)
+        self.assertRaises(ValueError, rep9.estimateByRelativeSize, name="a",
+                          methodCount=1)
+
         # Test Component in a Repository with too few Components
         # Test Component in a Repository with enough Components
 
