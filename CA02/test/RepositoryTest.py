@@ -252,6 +252,22 @@ class RepositoryTest(unittest.TestCase):
                           methodCount=1)
 
         # Test Component in a Repository with enough Components
+        rep11 = Repository.Repository(10)
+        com3 = Component.Component("a", 1, 76)
+        com4 = Component.Component("b", 4, 116)
+        com5 = Component.Component("c", 7, 113)
+        com6 = Component.Component("d", 5, 103)
+        com7 = Component.Component("e", 0, 1)
+        rep11.addComponent(com3)
+        rep11.addComponent(com4)
+        rep11.addComponent(com5)
+        rep11.addComponent(com6)
+        rep11.addComponent(com7)
+        com8 = rep11.estimateByRelativeSize(name="f", methodCount=5, size="S")
+        self.assertEqual(com8.name, "f")
+        self.assertEqual(com8.methodCount, 5)
+        self.assertEqual(com8.locCount, 75)
+        self.assertEqual(com8.relativeSize, "S")
 
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']
