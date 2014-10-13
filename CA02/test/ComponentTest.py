@@ -5,7 +5,7 @@ Tests verifying a component representing a code object of lines and methods.
 @author: Clay Miller
 '''
 import unittest
-from CA01.prod import Component
+from CA02.prod import Component
 
 class ComponentTest(unittest.TestCase):
     '''
@@ -68,7 +68,8 @@ class ComponentTest(unittest.TestCase):
         '''
         # Test lowercase string.
         com = Component.Component("a", 1, 1)
-        self.assertRaises(ValueError, com.setRelativeSize("s"))
+        self.assertEqual("S", com.setRelativeSize, "s")
+        self.assertEqual(com.relativeSize, "S")
 
         # Test uppercase string.
         # Test invalid string.
