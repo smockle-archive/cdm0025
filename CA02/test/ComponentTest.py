@@ -70,6 +70,11 @@ class ComponentTest(unittest.TestCase):
         com1 = Component.Component("a", 1, 1)
         self.assertRaises(ValueError, com1.getRelativeSize)
 
+        # Test set
+        com2 = Component.Component("a", 1, 1)
+        com2.relativeSize = "M"
+        self.assertEqual(com2.getRelativeSize(), "M")
+
     def testSetRelativeSize(self):
         '''
         Test setRelativeSize method.
