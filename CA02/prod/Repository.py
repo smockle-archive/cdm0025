@@ -203,8 +203,12 @@ class Repository(object):
 
         return relativeSize
 
-    def estimateByRelativeSize(self):
+    def estimateByRelativeSize(self, name, methodCount, size):
         '''
         Returns an instance of Component with an estimate of the number of lines
         of code based on relative size.
         '''
+        if name == "":
+            raise ValueError("Repository.estimateByRelativeSize:  Invalid " +
+                             "parameter. Name must be a non-empty, unique " +
+                             "string.")

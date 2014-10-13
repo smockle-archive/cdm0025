@@ -202,11 +202,17 @@ class RepositoryTest(unittest.TestCase):
         self.assertRaises(ValueError, rep1.estimateByRelativeSize, "", 1, "M")
 
         # Test non-string name
+
+        # Test missing name
+
         # Test zero methodCount
         # Test non-int methodCount
+        # Test missing methodCount
+
         # Test invalid size
         # Test non-string size
         # Test missing size
+
         # Test Component with duplicate name
         # Test Component in a Repository with too few Components
         # Test Component in a Repository with enough Components
