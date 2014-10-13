@@ -50,8 +50,12 @@ class RepositoryTest(unittest.TestCase):
         self.assertEqual(rep1.addComponent(com2), 1)
         self.assertEqual(rep1.queue[0].methodCount, 1)
 
+        # Test missing component
         rep2 = Repository.Repository(100)
         self.assertRaises(ValueError, rep2.addComponent)
+        self.assertEqual(len(rep2.queue), 0)
+
+        #
 
     def testCount(self):
         '''

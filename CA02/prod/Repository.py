@@ -26,7 +26,7 @@ class Repository(object):
         self.capacity = capacity
         self.queue = deque(maxlen=self.capacity)
 
-    def addComponent(self, component):
+    def addComponent(self, component=None):
         '''
         Adds an instance of Component to the repository. If adding the component
         will exceed the repository's capacity, the oldest component in the
@@ -37,6 +37,12 @@ class Repository(object):
         100 returns 100, etc.) addComponent does not check for duplicate
         components or components with duplicate names.
         '''
+        # Verify component
+        if component == None:
+            raise ValueError("Repository.addComponent:  Invalid parameters. " +
+                             "Must specify component to add.")
+
+        # Add component
         self.queue.append(component)
         return len(self.queue)
 
