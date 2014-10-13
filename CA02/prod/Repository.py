@@ -217,3 +217,14 @@ class Repository(object):
             raise ValueError("Repository.estimateByRelativeSize:  Invalid" +
                              "parameter. methodCount must be an integer " +
                              "greater than zero.")
+
+        if type(size) is not str:
+            raise ValueError("Repository.estimateByRelativeSize:  Invalid" +
+                             "parameter. size must be a string.")
+
+        size = size.upper()
+        sizes = ["VS", "S", "M", "L", "VL"]
+        if size not in sizes:
+            raise ValueError("Repository.estimateByRelativeSize:  Invalid " +
+                             "parameter. size must be VS, S, M, L or VL.")
+

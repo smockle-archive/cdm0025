@@ -228,7 +228,15 @@ class RepositoryTest(unittest.TestCase):
                           size="M")
 
         # Test invalid size
+        rep7 = Repository.Repository(5)
+        self.assertRaises(ValueError, rep7.estimateByRelativeSize, name="a",
+                          methodCount=1, size="sauerkraut")
+
         # Test non-string size
+        rep8 = Repository.Repository(5)
+        self.assertRaises(ValueError, rep8.estimateByRelativeSize, name="a",
+                          methodCount=1, size=1)
+
         # Test missing size
 
         # Test Component with duplicate name
