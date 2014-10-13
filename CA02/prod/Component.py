@@ -57,5 +57,5 @@ class Component(object):
         '''
         Sets the component's relative size.
         '''
-        self.relativeSize = "S"
-        return "S"
+        self.relativeSize = size
+        return self.relativeSize
