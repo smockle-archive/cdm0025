@@ -68,7 +68,7 @@ class ComponentTest(unittest.TestCase):
         '''
         # Test not set
         com1 = Component.Component("a", 1, 1)
-        self.assertRaises(ValueError, com1.getRelativeSize())
+        self.assertRaises(ValueError, com1.getRelativeSize)
 
     def testSetRelativeSize(self):
         '''
