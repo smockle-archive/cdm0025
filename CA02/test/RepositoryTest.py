@@ -168,6 +168,11 @@ class RepositoryTest(unittest.TestCase):
         self.assertRaises(ValueError, rep1.getRelativeSize)
 
         # Test Component with no methods.
+        rep2 = Repository.Repository(5)
+        com1 = Component.Component("a", 0, 1)
+        rep2.addComponent(com1)
+        self.assertRaises(ValueError, rep2.getRelativeSize, com1)
+
         # Test Component in a Repository with too few Components.
         # Test Component in a Repository with enough Components.
 
