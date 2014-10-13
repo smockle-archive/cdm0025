@@ -79,7 +79,7 @@ class ComponentTest(unittest.TestCase):
         # Test invalid string.
         com3 = Component.Component("a", 1, 1)
         com3.relativeSize = "M"
-        self.assertRaises(ValueError, com3.setRelativeSize(size="sauerkraut"))
+        self.assertRaises(ValueError, com3.setRelativeSize, "sauerkraut")
         self.assertEqual(com3.relativeSize, "M")
 
         # Test missing string.
