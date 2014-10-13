@@ -199,9 +199,13 @@ class RepositoryTest(unittest.TestCase):
         '''
         # Test zero-length name
         rep1 = Repository.Repository(5)
-        self.assertRaises(ValueError, rep1.estimateByRelativeSize, "", 1, "M")
+        self.assertRaises(ValueError, rep1.estimateByRelativeSize, name="",
+                          methodCount=1, size="M")
 
         # Test non-string name
+        rep2 = Repository.Repository(5)
+        self.assertRaises(ValueError, rep2.estimateByRelativeSize, name=1,
+                          methodCount=1, size="M")
 
         # Test missing name
 

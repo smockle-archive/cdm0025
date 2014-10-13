@@ -208,7 +208,7 @@ class Repository(object):
         Returns an instance of Component with an estimate of the number of lines
         of code based on relative size.
         '''
-        if name == "":
+        if (type(name) is not str) or (name == ""):
             raise ValueError("Repository.estimateByRelativeSize:  Invalid " +
                              "parameter. Name must be a non-empty, unique " +
                              "string.")
