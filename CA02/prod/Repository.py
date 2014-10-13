@@ -42,6 +42,10 @@ class Repository(object):
             raise ValueError("Repository.addComponent:  Invalid parameters. " +
                              "Must specify component to add.")
 
+        if component in self.queue:
+            raise ValueError("Repository.addComponent:  Invalid parameters. " +
+                             "Cannot add duplicate Component to Repository.")
+
         # Add component
         self.queue.append(component)
         return len(self.queue)
