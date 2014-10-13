@@ -68,7 +68,7 @@ class ComponentTest(unittest.TestCase):
         '''
         # Test lowercase string.
         com = Component.Component("a", 1, 1)
-        self.assertEqual(com.setRelativeSize("s"), "S")
+        self.assertEqual(com.setRelativeSize(size="s"), "S")
         self.assertEqual(com.relativeSize, "S")
 
         # Test uppercase string.
