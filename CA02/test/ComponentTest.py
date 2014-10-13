@@ -67,11 +67,15 @@ class ComponentTest(unittest.TestCase):
         Test setRelativeSize method.
         '''
         # Test lowercase string.
-        com = Component.Component("a", 1, 1)
-        self.assertEqual(com.setRelativeSize(size="s"), "S")
-        self.assertEqual(com.relativeSize, "S")
+        com1 = Component.Component("a", 1, 1)
+        self.assertEqual(com1.setRelativeSize(size="s"), "S")
+        self.assertEqual(com1.relativeSize, "S")
 
         # Test uppercase string.
+        com2 = Component.Component("a", 1, 1)
+        self.assertEqual(com2.setRelativeSize(size="M"), "M")
+        self.assertEqual(com2.relativeSize, "M")
+
         # Test invalid string.
         # Test missing string.
         # Test int.
