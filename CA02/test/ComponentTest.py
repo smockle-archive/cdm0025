@@ -83,6 +83,10 @@ class ComponentTest(unittest.TestCase):
         self.assertEqual(com3.relativeSize, "M")
 
         # Test missing string.
+        com4 = Component.Component("a", 1, 1)
+        self.assertEqual(com4.setRelativeSize(), "M")
+        self.assertEqual(com4.relativeSize, "M")
+
         # Test int.
 
 if __name__ == "__main__":
