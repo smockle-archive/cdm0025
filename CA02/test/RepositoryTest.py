@@ -245,6 +245,12 @@ class RepositoryTest(unittest.TestCase):
                           methodCount=1)
 
         # Test Component in a Repository with too few Components
+        rep10 = Repository.Repository(5)
+        com2 = Component.Component("a", 1, 1)
+        rep10.addComponent(com2)
+        self.assertRaises(ValueError, rep10.estimateByRelativeSize, name="b",
+                          methodCount=1)
+
         # Test Component in a Repository with enough Components
 
 if __name__ == "__main__":

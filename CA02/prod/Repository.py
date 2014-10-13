@@ -229,5 +229,11 @@ class Repository(object):
                              "parameter. size must be VS, S, M, L or VL.")
 
         if name in (queued.name for queued in self.queue):
-            raise ValueError("Repository.addComponent:  Invalid parameter. " +
-                             "Cannot create new Component with duplicate name.")
+            raise ValueError("Repository.estimateByRelativeSize:  Invalid " +
+                             "parameter. Cannot create new Component with " +
+                             "duplicate name.")
+
+        if self.validCount() < 2:
+            raise ValueError("Repository.estimateByRelativeSize:  Invalid " +
+                            "count. Repository must contain at least 2 " +
+                            "Components with non-zero methodCounts.")
