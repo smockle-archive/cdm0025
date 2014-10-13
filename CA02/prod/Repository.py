@@ -151,3 +151,55 @@ class Repository(object):
                             "count. Repository must contain at least 2 " +
                             "Components with non-zero methodCounts.")
 
+        # Let normalizedSize = ln(number of lines of code / number of methods)
+        # for each component having a non-zero method count.
+        normalizedSize = []
+        for comid in range(0, self.count()):
+            com = self.queue[comid]
+            if com.methodCount > 0:
+                normalizedSize.append(math.log(float(com.locCount) /
+                                                float(com.methodCount)))
+
+        # Let avg = the average of all values of normalizedSize
+        avg = 0
+        for normal in normalizedSize:
+            avg += normal
+        avg = float(avg) / float(len(normalizedSize))
+
+        # Let stdev = the standard deviation of all values of normalizedSize
+        # Calculate stdev as sqrt(sum((normalizedSizei - avg)^2) / (n-1))
+        # where normalizedSizei is the normalizedSize of the i-th component
+        # having a non-zero method count, and and n is the value returned by
+        # validCount()
+        stdev = 0
+        for normal in normalizedSize:
+            stdev += (float(normal) - float(avg)) ** 2
+        stdev = float(stdev) / (float(self.validCount()) - float(1))
+        stdev = math.sqrt(stdev)
+
+        # Calculate bounds for relative sizing
+        relativeSize = None
+        inputSize = component.locCount / component.methodCount
+        vsUpperBound = math.ceil(math.exp(float(avg) - float(1.5) *
+                                          float(stdev)))
+        sUpperBound = math.ceil(math.exp(float(avg) - float(0.5) *
+                                         float(stdev)))
+        mUpperBound = math.ceil(math.exp(float(avg) + float(0.5) *
+                                         float(stdev)))
+        lUpperBound = math.ceil(math.exp(float(avg) + float(1.5) *
+                                         float(stdev)))
+
+        # Convert number bounds to strings
+        if inputSize <= vsUpperBound:
+            relativeSize = "VS"
+        if (inputSize > vsUpperBound) and (inputSize <= sUpperBound):
+            relativeSize = "S"
+        if (inputSize > sUpperBound) and (inputSize <= mUpperBound):
+            relativeSize = "M"
+        if (inputSize > mUpperBound) and (inputSize <= lUpperBound):
+            relativeSize = "L"
+        if inputSize > lUpperBound:
+            relativeSize = "VL"
+
+        return relativeSize
+

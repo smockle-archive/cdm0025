@@ -180,6 +180,18 @@ class RepositoryTest(unittest.TestCase):
         self.assertRaises(ValueError, rep3.getRelativeSize, com2)
 
         # Test Component in a Repository with enough Components.
+        rep4 = Repository.Repository(10)
+        com3 = Component.Component("a", 1, 76)
+        com4 = Component.Component("b", 4, 116)
+        com5 = Component.Component("c", 7, 113)
+        com6 = Component.Component("d", 5, 103)
+        com7 = Component.Component("e", 0, 1)
+        rep4.addComponent(com3)
+        rep4.addComponent(com4)
+        rep4.addComponent(com5)
+        rep4.addComponent(com6)
+        rep4.addComponent(com7)
+        self.assertEqual(rep4.getRelativeSize(component=com3), "L")
 
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']
