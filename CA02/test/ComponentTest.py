@@ -5,7 +5,7 @@ Tests verifying a component representing a code object of lines and methods.
 @author: Clay Miller
 '''
 import unittest
-from CA02.prod import Component
+from CA01.prod import Component
 
 class ComponentTest(unittest.TestCase):
     '''
@@ -61,6 +61,19 @@ class ComponentTest(unittest.TestCase):
         # 1 is returned. CA01-1.1#4's methodCount is unchanged.
         com = Component.Component("a", 1, 1)
         self.assertEqual(com.getLocCount(), 1)
+
+    def testSetRelativeSize(self):
+        '''
+        Test setRelativeSize method.
+        '''
+        # Test lowercase string.
+        com = Component.Component("a", 1, 1)
+        self.assertRaises(ValueError, com.setRelativeSize("s"))
+
+        # Test uppercase string.
+        # Test invalid string.
+        # Test missing string.
+        # Test int.
 
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']

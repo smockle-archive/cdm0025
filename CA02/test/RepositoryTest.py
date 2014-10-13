@@ -5,8 +5,8 @@ Tests verifying a repository containing zero or more components.
 @author: Clay Miller
 '''
 import unittest
-from CA02.prod import Component
-from CA02.prod import Repository
+from CA01.prod import Component
+from CA01.prod import Repository
 
 class RepositoryTest(unittest.TestCase):
     '''
