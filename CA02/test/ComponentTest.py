@@ -88,6 +88,10 @@ class ComponentTest(unittest.TestCase):
         self.assertEqual(com4.relativeSize, "M")
 
         # Test int.
+        com5 = Component.Component("a", 1, 1)
+        com5.relativeSize = "M"
+        self.assertRaises(ValueError, com5.setRelativeSize, 1)
+        self.assertEqual(com5.relativeSize, "M")
 
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']
