@@ -8,6 +8,8 @@ A repository containing zero or more components.
 from collections import deque
 import math
 
+from CA02.prod import Component
+
 
 class Repository(object):
     '''
@@ -237,3 +239,9 @@ class Repository(object):
             raise ValueError("Repository.estimateByRelativeSize:  Invalid " +
                             "count. Repository must contain at least 2 " +
                             "Components with non-zero methodCounts.")
+
+        relativeSizes = self.determineRelativeSizes()
+        locCount = relativeSizes[sizes.index(size)] * methodCount
+        component = Component.Component(name, methodCount, locCount)
+        component.setRelativeSize(size)
+        return component
