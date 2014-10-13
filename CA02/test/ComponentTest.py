@@ -62,6 +62,14 @@ class ComponentTest(unittest.TestCase):
         com = Component.Component("a", 1, 1)
         self.assertEqual(com.getLocCount(), 1)
 
+    def testGetRelativeSize(self):
+        '''
+        Test getRelativeSize method.
+        '''
+        # Test not set
+        com1 = Component.Component("a", 1, 1)
+        self.assertRaises(ValueError, com1.getRelativeSize())
+
     def testSetRelativeSize(self):
         '''
         Test setRelativeSize method.
