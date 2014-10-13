@@ -242,6 +242,6 @@ class Repository(object):
 
         relativeSizes = self.determineRelativeSizes()
         locCount = relativeSizes[sizes.index(size)] * methodCount
-        component = Component.Component(name, methodCount, locCount)
+        component = Component.Component(name, methodCount, int(locCount))
         component.setRelativeSize(size)
         return component
