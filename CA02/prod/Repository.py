@@ -116,21 +116,23 @@ class Repository(object):
         relativeSizes = []
 
         # Let vs =e^(avg-2*stdev) ceiling'ed to the nearest integer
-        relativeSizes.append(math.ceil(math.exp(float(avg) - float(2) *
-                                              float(stdev))))
+        relativeSizes.append(int(math.ceil(math.exp(float(avg) - float(2) *
+                                              float(stdev)))))
 
         # Let s = e^(avg-stdev) ceiling'ed to the nearest integer
-        relativeSizes.append(math.ceil(math.exp(float(avg) - float(stdev))))
+        relativeSizes.append(int(math.ceil(math.exp(float(avg) -
+                                                    float(stdev)))))
 
         # Let m = e^avg ceiling'ed to the nearest integer
-        relativeSizes.append(math.ceil(math.exp(float(avg))))
+        relativeSizes.append(int(math.ceil(math.exp(float(avg)))))
 
         # Let l = e^(avg+stdev) ceiling'ed to the nearest integer
-        relativeSizes.append(math.ceil(math.exp(float(avg) + float(stdev))))
+        relativeSizes.append(int(math.ceil(math.exp(float(avg) +
+                                                    float(stdev)))))
 
         # Let vl = e^(avg+2*stdev) ceiling'ed to the nearest integer
-        relativeSizes.append(math.ceil(math.exp(float(avg) + float(2) *
-                                              float(stdev))))
+        relativeSizes.append(int(math.ceil(math.exp(float(avg) + float(2) *
+                                              float(stdev)))))
 
         # Return [vs, s, m, l, vl]
         return relativeSizes
@@ -192,15 +194,15 @@ class Repository(object):
                                          float(stdev)))
 
         # Convert number bounds to strings
-        if inputSize <= vsUpperBound:
+        if inputSize < vsUpperBound:
             relativeSize = "VS"
-        if (inputSize > vsUpperBound) and (inputSize <= sUpperBound):
+        if (inputSize >= vsUpperBound) and (inputSize < sUpperBound):
             relativeSize = "S"
-        if (inputSize > sUpperBound) and (inputSize <= mUpperBound):
+        if (inputSize >= sUpperBound) and (inputSize < mUpperBound):
             relativeSize = "M"
-        if (inputSize > mUpperBound) and (inputSize <= lUpperBound):
+        if (inputSize >= mUpperBound) and (inputSize < lUpperBound):
             relativeSize = "L"
-        if inputSize > lUpperBound:
+        if inputSize >= lUpperBound:
             relativeSize = "VL"
 
         return relativeSize
