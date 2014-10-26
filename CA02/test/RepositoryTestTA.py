@@ -462,7 +462,7 @@ class RepositoryTestTA(unittest.TestCase):
         for i in range(len(methodCounts)):
             theRepository.addComponent(Component.Component("C" + str(i), methodCounts[i], locCounts[i]))
         newComponent = Component.Component("New", 1, 42)
-        newRelativeSize = "L"
+        newRelativeSize = "M"
         self.assertEquals(newRelativeSize, theRepository.getRelativeSize(newComponent))
 
     def test800_900_ShouldObjectToMissingComponent(self):
