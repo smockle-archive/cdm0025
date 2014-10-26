@@ -194,15 +194,15 @@ class Repository(object):
                                          float(stdev)))
 
         # Convert number bounds to strings
-        if inputSize < vsUpperBound:
+        if inputSize <= vsUpperBound:
             relativeSize = "VS"
-        if (inputSize >= vsUpperBound) and (inputSize < sUpperBound):
+        if (inputSize > vsUpperBound) and (inputSize <= sUpperBound):
             relativeSize = "S"
-        if (inputSize >= sUpperBound) and (inputSize < mUpperBound):
+        if (inputSize > sUpperBound) and (inputSize <= mUpperBound):
             relativeSize = "M"
-        if (inputSize >= mUpperBound) and (inputSize < lUpperBound):
+        if (inputSize > mUpperBound) and (inputSize <= lUpperBound):
             relativeSize = "L"
-        if inputSize >= lUpperBound:
+        if inputSize > lUpperBound:
             relativeSize = "VL"
 
         return relativeSize
