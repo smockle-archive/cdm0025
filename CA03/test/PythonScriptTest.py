@@ -35,7 +35,13 @@ class PythonScriptTest(unittest.TestCase):
                           fileName=3)
 
         # Test valid fileName, file does not exist
+        self.assertRaises(ValueError, PythonScript.PythonScript,
+                          fileName="../public/shibboleth_missing.py")
+
         # Test valid fileName, file does exist
+        self.assertIsInstance(PythonScript.PythonScript(
+            fileName="../public/shibboleth_not_missing.py"),
+            PythonScript.PythonScript)
 
     def testGetFileName(self):
         '''

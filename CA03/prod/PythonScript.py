@@ -5,6 +5,7 @@ Determines the number of lines of code and Components in a Python file.
 @author: Clay Miller
 '''
 from __builtin__ import ValueError, str
+import os.path
 
 class PythonScript(object):
     '''
@@ -19,10 +20,14 @@ class PythonScript(object):
             raise ValueError("PythonScript.__init__:  Invalid parameter. " +
                              "fileName must be a non-empty string.")
 
-        if ".py" not in fileName:
+        if len(fileName) < 4:
+            raise ValueError("PythonScript.__init__:  Invalid parameter. " +
+                             "fileName must be at least four characters.")
+
+        if fileName[-3:] != ".py":
             raise ValueError("PythonScript.__init__:  Invalid parameter. " +
                              "fileName must end with extension \".py\".")
 
-        if len(fileName) < 4:
+        if not os.path.isfile(fileName):
             raise ValueError("PythonScript.__init__:  Invalid parameter. " +
-                             "fileName (excluding extension) cannot be blank.")
+                             "fileName does not exist.")
