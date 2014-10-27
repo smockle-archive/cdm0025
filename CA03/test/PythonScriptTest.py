@@ -61,6 +61,9 @@ class PythonScriptTest(unittest.TestCase):
         Test countLoc method.
         '''
         # Test empty file
+        script = PythonScript.PythonScript(fileName="../public/not_missing.py")
+        self.assertEqual(script.countLoc(), 0)
+
         # Test file with 3 comments
         # Test file with 3 docstrings
         # Test file with 3 blank lines
