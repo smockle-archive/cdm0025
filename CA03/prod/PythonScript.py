@@ -190,4 +190,14 @@ class PythonScript(object):
                     methodCount = 1
                     continue
 
+        if name != "" and inFunctional:
+            component = Component.Component(name=name,
+                        methodCount=methodCount, locCount=locCount)
+            functional_components.append(component)
+
+        if name != "" and inOO:
+            component = Component.Component(name=name,
+                        methodCount=methodCount, locCount=locCount)
+            oo_components.append(component)
+
         return (oo_components, functional_components)
