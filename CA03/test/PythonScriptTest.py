@@ -82,7 +82,8 @@ class PythonScriptTest(unittest.TestCase):
 
         # Test file with 3 comments, 3 docstrings, 3 blank lines and 3 countable
         # lines
-
+        script = PythonScript.PythonScript(fileName="../public/complex.py")
+        self.assertEqual(script.countLoc(), 3)
 
     def testExtractDesign(self):
         '''
