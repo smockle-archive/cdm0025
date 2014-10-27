@@ -36,22 +36,25 @@ class PythonScriptTest(unittest.TestCase):
 
         # Test valid fileName, file does not exist
         self.assertRaises(ValueError, PythonScript.PythonScript,
-                          fileName="../public/shibboleth_missing.py")
+                          fileName="../public/missing.py")
 
         # Test valid fileName, file does exist
         self.assertIsInstance(PythonScript.PythonScript(
-            fileName="../public/shibboleth_not_missing.py"),
-            PythonScript.PythonScript)
+            fileName="../public/not_missing.py"), PythonScript.PythonScript)
 
     def testGetFileName(self):
         '''
         Test getFileName method.
         '''
+        script = PythonScript.PythonScript(fileName="../public/not_missing.py")
+        self.assertEqual(script.getFileName(), "not_missing.py")
 
     def testGetFilePath(self):
         '''
         Test getFilePath method.
         '''
+        script = PythonScript.PythonScript(fileName="../public/not_missing.py")
+        self.assertEqual(script.getFilePath(), "../public")
 
     def testCountLoc(self):
         '''

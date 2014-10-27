@@ -31,3 +31,18 @@ class PythonScript(object):
         if not os.path.isfile(fileName):
             raise ValueError("PythonScript.__init__:  Invalid parameter. " +
                              "fileName does not exist.")
+
+        self.fileName = os.path.basename(fileName)
+        self.filePath = os.path.dirname(fileName)
+
+    def getFileName(self):
+        '''
+        Returns the fileName of the component.
+        '''
+        return self.fileName
+
+    def getFilePath(self):
+        '''
+        Returns the fileName of the component.
+        '''
+        return self.filePath
