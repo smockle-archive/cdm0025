@@ -80,7 +80,9 @@ class PythonScriptTest(unittest.TestCase):
         script = PythonScript.PythonScript(fileName="../public/countable.py")
         self.assertEqual(script.countLoc(), 3)
 
-        # Test file with 3 comments, 3 docstrings, 3 blank lines and 3 countable lines
+        # Test file with 3 comments, 3 docstrings, 3 blank lines and 3 countable
+        # lines
+
 
     def testExtractDesign(self):
         '''

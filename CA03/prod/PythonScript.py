@@ -52,4 +52,31 @@ class PythonScript(object):
         Returns the number of non-comment, non-docstring, non-blank lines in the
         PythonScript.
         '''
-        return 0
+        locPath = self.fileName
+        if len(self.filePath) > 0:
+            locPath = self.filePath + "/" + locPath
+
+        commentString = ""
+        loc = 0
+
+        with open(locPath, "r") as locFile:
+            for line in locFile:
+                line = line.strip()
+                if len(line) == 0:
+                    continue
+                elif line[0] == "#":
+                    continue
+                elif (len(commentString) > 0 and line[0:len(commentString)] !=
+                      commentString):
+                    continue
+                elif (len(commentString) > 0 and line[0:len(commentString)] ==
+                      commentString):
+                    commentString = ""
+                    continue
+                elif (len(line) >= 3 and (line[0:3] == "\"\"\"" or line[0:3] ==
+                      "'''")):
+                    commentString = line[0:3]
+                    continue
+                else:
+                    loc = loc + 1
+        return loc
