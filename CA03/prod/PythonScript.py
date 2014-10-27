@@ -15,6 +15,10 @@ class PythonScript(object):
         '''
         Creates an instance of PythonScript, saving its fileName.
         '''
-        if (type(fileName) is not str) or (len(fileName) < 1):
-            raise ValueError("Component.__init__:  Invalid parameters. name " +
-                             "must be a non-empty string.")
+        if (type(fileName) is not str) or (len(fileName) < 4):
+            raise ValueError("Component.__init__:  Invalid parameter. " +
+                             "fileName must be a non-empty string.")
+
+        if ".py" not in fileName:
+            raise ValueError("Component.__init__:  Invalid parameter. " +
+                             "File must have the extension \".py\".")

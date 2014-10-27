@@ -19,7 +19,13 @@ class PythonScriptTest(unittest.TestCase):
         # Test no fileName specified
         self.assertRaises(ValueError, PythonScript.PythonScript)
 
+        # Test blank filename
+        self.assertRaises(ValueError, PythonScript.PythonScript, fileName="")
+
         # Test fileName without ".py"
+        self.assertRaises(ValueError, PythonScript.PythonScript,
+                          fileName="aaaa")
+
         # Test fileName only ".py"
         # Test fileName that isn't a string
         # Test valid fileName, file does not exist
