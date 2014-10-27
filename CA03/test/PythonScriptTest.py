@@ -31,6 +31,9 @@ class PythonScriptTest(unittest.TestCase):
                           fileName=".py")
 
         # Test fileName that isn't a string
+        self.assertRaises(ValueError, PythonScript.PythonScript,
+                          fileName=3)
+
         # Test valid fileName, file does not exist
         # Test valid fileName, file does exist
 
