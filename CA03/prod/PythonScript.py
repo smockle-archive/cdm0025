@@ -46,3 +46,10 @@ class PythonScript(object):
         Returns the fileName of the component.
         '''
         return self.filePath
+
+    def countLoc(self):
+        '''
+        Returns the number of non-comment, non-docstring, non-blank lines in the
+        PythonScript.
+        '''
+        return 0
